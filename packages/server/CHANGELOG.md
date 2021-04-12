@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.20.0](https://github.com/AugustoPeraltaSoft/functionsmonorepo/compare/v1.19.0...v1.20.0) (2021-04-12)
+
+
+### Features
+
+* configure pipelines ([a1fa317](https://github.com/AugustoPeraltaSoft/functionsmonorepo/commit/a1fa317cef137ddddba2cb9c3fcd6bc3fb4a2dc5))
+
+
+
+
+
+
 ## 1.18.1 (2021-04-12)
 
 **Note:** Version bump only for package @gskTest/server

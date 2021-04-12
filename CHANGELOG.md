@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.20.0](https://github.com/AugustoPeraltaSoft/functionsmonorepo/compare/v1.19.0...v1.20.0) (2021-04-12)
+
+
+### Bug Fixes
+
+* azure pipeline update ([43164ca](https://github.com/AugustoPeraltaSoft/functionsmonorepo/commit/43164ca49b9431c97e0bc14a5ec517aedc04824a))
+* configure pipeline parameters ([01cbcca](https://github.com/AugustoPeraltaSoft/functionsmonorepo/commit/01cbcca23fb8734454532ae622e3c43869a2fc54))
+
+
+### Features
+
+* configure pipelines ([a1fa317](https://github.com/AugustoPeraltaSoft/functionsmonorepo/commit/a1fa317cef137ddddba2cb9c3fcd6bc3fb4a2dc5))
+
+
+
+
+
+
 # [1.19.0](https://github.com/AugustoPeraltaSoft/functionsmonorepo/compare/v1.18.1...v1.19.0) (2021-04-12)
 
 
