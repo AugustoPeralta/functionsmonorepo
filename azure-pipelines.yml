@@ -5,7 +5,7 @@ name: $(Date:yyyyMMdd)$(Rev:.r)
 trigger:
   branches:
     include:
-      - master
+      - main
   paths:
     exclude:
       - docs/*
