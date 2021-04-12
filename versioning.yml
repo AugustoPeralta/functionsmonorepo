@@ -5,8 +5,8 @@ jobs:
   - job: Tag
 
     steps:
-      - script: yarn install
-        displayName: 'install'
+#      - script: yarn install
+#        displayName: 'install'
       # Configure Github
       - script: |
             git config --global user.email "augusto.peralta@softvision.com"
