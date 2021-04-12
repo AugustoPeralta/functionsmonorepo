@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.19.0](https://github.com/AugustoPeraltaSoft/functionsmonorepo/compare/v1.18.1...v1.19.0) (2021-04-12)
+
+
+### Bug Fixes
+
+* change trigger ([925e2f2](https://github.com/AugustoPeraltaSoft/functionsmonorepo/commit/925e2f276dc77a2c07104a12ddb553a3d59c6b7f))
+
+
+### Features
+
+* change on the front package ([d34b1b5](https://github.com/AugustoPeraltaSoft/functionsmonorepo/commit/d34b1b5c76b8d4f9a567e136f4fce6af519a54c3))
+
+
+
+
+
+
 ## 1.18.1 (2021-04-12)
 
 
