@@ -1,0 +1,51 @@
+parameters:
+  - name: 'tag'
+  - name: 'lastTag'
+
+jobs:
+  - job: Build
+    steps:
+      - script: echo $(TAG) ~ $(_LTAG)
+        displayName: check variable
+      # Build artifacts
+      - script: yarn
+        displayName: Install Packages
+#      - script: yarn lint
+#        displayName: linting
+      # Test just the changed packages
+      - script: npm run test
+        displayName: unit testing
+      # Build just the changed packages
+      - script: yarn run ci:build --since $(tag)
+        displayName: build
+
+  - job: Package
+    dependsOn: Build
+    steps:
+      # Run to package
+#      - script: yarn install --production
+#        displayName: prune dependencies
+#      - script: cp -R node_modules ./dist
+#        displayName: copy node modules
+      - script: npm i npm-pack-zip
+      - script:  yarn run ci:zip --since $(tag)
+
+      # publish package as artifact
+      - task: PublishPipelineArtifact@1
+        displayName: publish package
+        inputs:
+          targetPath: '$(Pipeline.Workspace)'
+          artifact: 'build-${{ parameters.tag }}.zip'
+      - task: CopyFiles@2
+        inputs:
+          Contents: '**\packages\**\*.zip'
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+          OverWrite: true
+      - task: PublishPipelineArtifact@1
+        displayName: publish package
+        inputs:
+          targetPath: '$(Build.ArtifactStagingDirectory)'
+          artifact: 'build-$(lastTag)'
+          publishLocation: 'pipeline'
+
+
