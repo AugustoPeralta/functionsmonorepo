@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.18.1 (2021-04-12)
+
+**Note:** Version bump only for package @gskTest/front
+
+
+
+
+
+
 # [1.18.0](https://github.com/AugustoPeralta/yarn-workspaces/compare/v1.17.0...v1.18.0) (2021-04-09)
 
 

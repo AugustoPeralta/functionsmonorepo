@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.18.1 (2021-04-12)
+
+
+### Bug Fixes
+
+* setting main as default branch ([e374eb7](https://github.com/AugustoPeraltaSoft/functionsmonorepo/commit/e374eb74edf20c162db0bee6e8cd0971bc99f6ee))
+
+
+### Features
+
+* run azure pipeline ([8a1a13e](https://github.com/AugustoPeraltaSoft/functionsmonorepo/commit/8a1a13e38dd3323bb8b03af9618663b00718cbbd))
+
+
+
+
+
+
 # [1.18.0](https://github.com/AugustoPeralta/yarn-workspaces/compare/v1.17.0...v1.18.0) (2021-04-09)
 
 
