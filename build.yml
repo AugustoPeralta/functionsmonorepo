@@ -5,7 +5,7 @@ parameters:
 jobs:
   - job: Build
     steps:
-      - script: echo $(TAG) ~ $(_LTAG)
+      - script: echo ${{ parameters.tag }} ~ ${{ parameters.lastTag }}
         displayName: check variable
       # Build artifacts
       - script: yarn
@@ -16,7 +16,7 @@ jobs:
       - script: npm run test
         displayName: unit testing
       # Build just the changed packages
-      - script: yarn run ci:build --since $(tag)
+      - script: yarn run ci:build --since ${{ parameters.tag }}
         displayName: build
 
   - job: Package
@@ -28,14 +28,9 @@ jobs:
 #      - script: cp -R node_modules ./dist
 #        displayName: copy node modules
       - script: npm i npm-pack-zip
-      - script:  yarn run ci:zip --since $(tag)
+      - script:  yarn run ci:zip --since ${{ parameters.tag }}
 
       # publish package as artifact
-      - task: PublishPipelineArtifact@1
-        displayName: publish package
-        inputs:
-          targetPath: '$(Pipeline.Workspace)'
-          artifact: 'build-${{ parameters.tag }}.zip'
       - task: CopyFiles@2
         inputs:
           Contents: '**\packages\**\*.zip'
@@ -45,7 +40,7 @@ jobs:
         displayName: publish package
         inputs:
           targetPath: '$(Build.ArtifactStagingDirectory)'
-          artifact: 'build-$(lastTag)'
+          artifact: 'build-${{ parameters.lastTag }}'
           publishLocation: 'pipeline'
 
 
