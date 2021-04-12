@@ -1,0 +1,117 @@
+# File: azure-pipelines.yaml
+
+name: $(Date:yyyyMMdd)$(Rev:.r)
+
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - docs/*
+
+pr:
+  - master
+
+resources:
+  - repo: self
+
+#variables:
+#  - template: variables.yaml
+
+stages:
+  - stage: Test_Tag
+    displayName: Test and Tag
+    pool:
+        vmImage: 'vs2017-win2016'
+    jobs:
+      - job: Test_Tag
+        displayName: Test & Tag
+        variables:
+            GH_TOKEN: $(GitHubToken)
+#            TAG:  $((-split $(git describe --abbrev=0 --tags $(git rev-list --tags --max-count=2)))[1])
+#          _NPM_TOKEN: $(NpmToken)
+        steps:
+          - script: yarn install
+            displayName: 'install'
+
+          - script: |
+              git config --global user.email "augustoperaltamontero@gmail.com"
+              git config --global user.name "AugustoPeralta"
+              git remote rm origin
+              git remote add origin https://$(GH_TOKEN)@github.com/AugustoPeralta/yarn-workspaces.git
+              git fetch origin
+              git checkout master
+
+          - script: yarn run new-version
+            displayName: 'Tag version'
+          - powershell: |
+              echo "##vso[task.setvariable variable=Tag;isOutput=true]$((-split $(git describe --abbrev=0 --tags $(git rev-list --tags --max-count=2)))[1])"
+              echo "##vso[task.setvariable variable=LTag;isOutput=true]$((-split $(git describe --abbrev=0 --tags $(git rev-list --tags --max-count=2)))[0])"
+            name: setOutputVar
+
+  - stage: CI
+    displayName: Continuous Integration
+    dependsOn: Test_Tag
+    variables:
+      _TAG: $[ stageDependencies.Test_Tag.Test_Tag.outputs['setOutputVar.Tag'] ]
+      _LTAG: $[ stageDependencies.Test_Tag.Test_Tag.outputs['setOutputVar.LTag'] ]
+    pool:
+        vmImage: 'vs2017-win2016'
+        demands: npm
+    jobs:
+      - job: var
+        displayName: check variable
+        steps:
+          - script: echo $(_TAG) ~ $(_LTAG)
+          - script: npm run test
+            displayName: 'Test'
+          - script: yarn run ci:build --since $(_TAG)
+      # Run to package
+          - script: npm i npm-pack-zip
+          - script:  yarn run ci:zip --since $(_TAG)
+#          - script: yarn install 
+#            displayName: prune dependencies
+#          - script: cp -R node_modules ./dist
+#            displayName: copy node modules
+#          - script: yarn ci:zip --since $(_TAG)
+      # publish package as artifact
+
+          - task: CopyFiles@2
+            inputs:
+              Contents: '**\packages\**\*.zip'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+              OverWrite: true
+          - task: PublishPipelineArtifact@1
+            displayName: publish package
+            inputs:
+              targetPath: '$(Build.ArtifactStagingDirectory)'
+              artifact: 'build-$(_LTAG)'
+              publishLocation: 'pipeline'
+          
+
+#  - stage: CI
+#    displayName: Continuous Integration
+#    dependsOn: Tag
+#    variables:
+#      _NEXT_RELEASE_TAG: $[ stageDependencies.Tag.release.outputs['setOutputVar.versionNumber'] ]
+#    pool:
+#        name: Hosted VS2017
+#        demands: npm
+#    jobs:
+#      - template: ./build.yaml
+#        parameters:
+#          tag: $(_NEXT_RELEASE_TAG)
+      
+#  - stage: CD
+#    displayName: Continuous Deployment
+#    condition: 
+#    jobs:
+#      - template: ./deploy.yaml
+#        parameters:
+#          buildLocation: $(Pipeline.Workspace)/**/*.zip
+#          resourceGroupName: $(serviceConnectionRG)
+#          azureSubscription: $(serviceConnection)
+#          environment: '$(pushBranch)'
+#          appName: '$(appName)'
+#          notifyUsers: '$(notifyUsers)'
