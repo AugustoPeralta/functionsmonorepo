@@ -50,7 +50,10 @@ stages:
       
   - stage: CD
     displayName: Continuous Deployment
-#    condition: 
+#    condition:
+    dependsOn: CI 
+    variables:
+      _TAG: $[ stageDependencies.TAG.Tag.outputs['setOutputVar.Tag'] ]
     jobs:
       - template: ./deploy.yml
         parameters:
@@ -60,3 +63,4 @@ stages:
           environment: '$(pushBranch)'
           appName: '$(appName)'
           notifyUsers: '$(notifyUsers)'
+          tag: $(_TAG)

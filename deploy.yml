@@ -5,13 +5,14 @@ parameters:
   resourceGroupName: ''
   appName: ''
   notifyUsers: ''
+  tag: ''
 
 jobs:
   - job: CheckingChanges
     displayName: CheckingChanges
     continueOnError: true
     steps:
-      - script: echo Job A ran
+      - script: yarn run changed | findstr 'nodedemoapp' --since ${{ parameters.tag }}
 
   - job: CreateQASlot
     dependsOn: CheckingChanges
