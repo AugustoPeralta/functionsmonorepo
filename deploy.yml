@@ -11,6 +11,8 @@ jobs:
   - job: CheckingChanges
     displayName: CheckingChanges
     continueOnError: true
+    pool:
+      vmImage: 'ubuntu-latest'
     steps: 
       - script: npm install --global lerna
       - script: yarn run changed | findstr 'nodedemoapp' --since ${{ parameters.tag }}

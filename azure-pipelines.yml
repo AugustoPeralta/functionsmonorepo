@@ -11,7 +11,7 @@ trigger:
       - docs/*
 
 pr:
-  - master
+  - main
 
 resources:
   - repo: self
@@ -63,4 +63,4 @@ stages:
           environment: '$(pushBranch)'
           appName: '$(appName)'
           notifyUsers: '$(notifyUsers)'
-          tag: $(_TAG)
+          tag: '$(_TAG)'
