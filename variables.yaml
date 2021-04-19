@@ -1,0 +1,17 @@
+variables:
+  - name: buildLocation
+    value: $(Pipeline.Workspace)/**/*.zip
+  - name: serviceConnectionRG
+    value: 'functionappapm'
+  - name: serviceConnection
+    value: 'DemoSC'
+  - name: environment
+    value: QA
+  - name: appName
+    value: 'FunctionAppAPM'
+  - name: notifyUsers
+    value: 'augusto.peralta.demo@gmail.com'  
+#  - name: GitHubToken
+#    value: $(GITHUB-TOKEN)
+#  - name: NpmToken
+#    value: $(NPM-TOKEN)

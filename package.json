@@ -12,7 +12,7 @@
     "changed": "lerna changed --since",
     "list": "lerna list --since",
     "ci:build": "lerna run ci:build",
-    "ci:zip": "lerna run zip"
+    "ci:zip": "lerna run pack"
   },
   "name": "yarn-workspaces",
   "version": "1.0.0",
@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@lerna/changed": "^4.0.0",
+    "durable-functions": "^1.4.6",
     "npm-pack-all": "^1.12.7"
   }
 }

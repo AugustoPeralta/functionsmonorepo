@@ -7,7 +7,6 @@
     "test": "echo Front works awesome!",
     "build": "echo building Front @@@@@@@@@@",
     "ci:build": "yarn run build",
-    "pack": "npm-pack-zip",
-    "zip": "npm run pack"
+    "pack": "npm run npm-pack-zip"
   }
 }

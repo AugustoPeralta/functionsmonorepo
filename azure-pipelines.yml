@@ -40,8 +40,8 @@ stages:
       _TAG: $[ stageDependencies.TAG.Tag.outputs['setOutputVar.Tag'] ]
       _LTAG: $[ stageDependencies.TAG.Tag.outputs['setOutputVar.LTag'] ]
     pool:
-        name: Hosted VS2017
-        demands: npm
+      vmImage: 'ubuntu-latest'
+
     jobs:
       - template: ./build.yml
         parameters:

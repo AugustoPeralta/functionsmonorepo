@@ -13,7 +13,7 @@ jobs:
 #      - script: yarn lint
 #        displayName: linting
       # Test just the changed packages
-      - script: npm run test
+      - script: yarn test
         displayName: unit testing
       # Build just the changed packages
       - script: yarn run ci:build --since ${{ parameters.tag }}
@@ -32,17 +32,52 @@ jobs:
       # Create the files just for the changed packages, remove the --since flag if you want to zip all the packages
       - script:  yarn run ci:zip --since ${{ parameters.tag }}
 
+      - task: DeleteFiles@1
+        inputs:
+          Contents: "node_modules"
+      - task: DeleteFiles@1
+        inputs:
+          Contents: "Tests"
       # publish package as artifact
+
       - task: CopyFiles@2
         inputs:
-          Contents: '**\packages\**\*.zip'
-          TargetFolder: '$(Build.ArtifactStagingDirectory)'
-          OverWrite: true
-      - task: PublishPipelineArtifact@1
-        displayName: publish package
+          TargetFolder: "$(Build.ArtifactStagingDirectory)/functionapp"
+
+      - task: ArchiveFiles@1
         inputs:
-          targetPath: '$(Build.ArtifactStagingDirectory)'
-          artifact: 'build-${{ parameters.lastTag }}'
-          publishLocation: 'pipeline'
+          rootFolder: "$(Build.ArtifactStagingDirectory)/functionapp"
+          includeRootFolder: "false"
+          archiveFile: "$(Build.ArtifactStagingDirectory)/functionapp.zip"
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: "$(Build.ArtifactStagingDirectory)/functionapp.zip"
+          ArtifactName: "drop"
+          ArtifactType: "Container"
+
+    
+  
+
+
+
+
+
+
+
+
+
+      # publish package as artifact
+#      - task: CopyFiles@2
+#        inputs:
+#          Contents: '**\packages\**\*.zip'
+#          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+#          OverWrite: true
+#      - task: PublishPipelineArtifact@1
+#        displayName: publish package
+#        inputs:
+#          targetPath: '$(Build.ArtifactStagingDirectory)'
+#          artifact: 'build-${{ parameters.lastTag }}'
+#          publishLocation: 'pipeline'
 
 
