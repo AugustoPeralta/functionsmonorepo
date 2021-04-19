@@ -10,5 +10,5 @@
  */
 
 module.exports = async function (context) {
-    return `Hello AP ${context.bindings.name}!`;
+    return `Hello Augus ${context.bindings.name}!`;
 };
