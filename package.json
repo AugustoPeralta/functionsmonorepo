@@ -25,6 +25,7 @@
   "dependencies": {
     "@lerna/changed": "^4.0.0",
     "durable-functions": "^1.4.6",
-    "npm-pack-all": "^1.12.7"
+    "npm-pack-all": "^1.12.7",
+    "azure-functions-pack": "^1.0.0"
   }
 }
