@@ -16,7 +16,7 @@ jobs:
     steps: 
       - script: yarn
         displayName: Install Packages
-      - script: yarn run changed | findstr 'nodedemoapp' --since ${{ parameters.tag }}
+      - script: yarn run changed | findstr 'nodedemoapp'
 
   - job: CreateQASlot
     dependsOn: CheckingChanges
