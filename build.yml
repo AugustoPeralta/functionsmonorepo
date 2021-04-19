@@ -28,7 +28,7 @@ jobs:
 #      - script: cp -R node_modules ./dist
 #        displayName: copy node modules
 
-#      - script: npm i npm-pack-zip
+      - script: npm i npm-pack-zip
       # Create the files just for the changed packages, remove the --since flag if you want to zip all the packages
       - script:  yarn run ci:zip --since ${{ parameters.tag }}
 
