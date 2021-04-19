@@ -16,8 +16,8 @@ pr:
 resources:
   - repo: self
 
-#variables:
-#  - template: variables.yaml
+variables:
+  - template: variables.yaml
 
 stages:
 
@@ -48,15 +48,15 @@ stages:
           tag: $(_TAG)
           lastTag: $(_LTAG)
       
-#  - stage: CD
-#    displayName: Continuous Deployment
+  - stage: CD
+    displayName: Continuous Deployment
 #    condition: 
-#    jobs:
-#      - template: ./deploy.yml
-#        parameters:
-#          buildLocation: $(Pipeline.Workspace)/**/*.zip
-#          resourceGroupName: $(serviceConnectionRG)
-#          azureSubscription: $(serviceConnection)
-#          environment: '$(pushBranch)'
-#          appName: '$(appName)'
-#          notifyUsers: '$(notifyUsers)'
+    jobs:
+      - template: ./deploy.yml
+        parameters:
+          buildLocation: $(Pipeline.Workspace)/**/*.zip
+          resourceGroupName: $(serviceConnectionRG)
+          azureSubscription: $(serviceConnection)
+          environment: '$(pushBranch)'
+          appName: '$(appName)'
+          notifyUsers: '$(notifyUsers)'
