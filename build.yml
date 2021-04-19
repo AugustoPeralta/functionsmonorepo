@@ -54,31 +54,6 @@ jobs:
       - task: PublishBuildArtifacts@1
         inputs:
           PathtoPublish: "$(Build.ArtifactStagingDirectory)/functionapp/"
-          ArtifactName: "app"
+          ArtifactName: "app-${{ parameters.lastTag }}"
           ArtifactType: "Container"
-
-    
-  
-
-
-
-
-
-
-
-
-
-      # publish package as artifact
-#      - task: CopyFiles@2
-#        inputs:
-#          Contents: '**\packages\app\*.zip'
-#          TargetFolder: '$(Build.ArtifactStagingDirectory)'
-#          OverWrite: true
-#      - task: PublishPipelineArtifact@1
-#        displayName: publish package
-#        inputs:
-#          targetPath: '$(Build.ArtifactStagingDirectory)'
-#          artifact: 'build-${{ parameters.lastTag }}'
-#          publishLocation: 'pipeline'
-
 

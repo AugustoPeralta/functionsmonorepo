@@ -27,10 +27,10 @@ jobs:
     steps:
       - task: AzureCLI@2
         inputs:
-          azureSubscription: 'DemoSC'
+          azureSubscription: ' ${{ parameters.azureSubscription }}'
           scriptType: 'ps'
           scriptLocation: 'inlineScript'
-          inlineScript: 'az functionapp deployment slot create --name FunctionAppAPM --resource-group functionappapm --slot QA'
+          inlineScript: 'az functionapp deployment slot create --name ${{ parameters.appName }} --resource-group ${{ parameters.resourceGroupName }} --slot QA'
 
   - deployment: DeployApp
     displayName: deploy Function App
