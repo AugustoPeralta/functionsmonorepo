@@ -14,7 +14,6 @@ jobs:
     pool:
       vmImage: 'ubuntu-latest'
     steps: 
-      - script: npm install --global lerna
       - script: yarn run changed | findstr 'nodedemoapp' --since ${{ parameters.tag }}
 
   - job: CreateQASlot
