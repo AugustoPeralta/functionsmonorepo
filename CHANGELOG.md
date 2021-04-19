@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.1](https://github.com/AugustoPeraltaSoft/functionsmonorepo/compare/v1.22.0...v1.22.1) (2021-04-19)
+
+
+### Features
+
+* fix ([1bb0b96](https://github.com/AugustoPeraltaSoft/functionsmonorepo/commit/1bb0b964b09953096d0338a2d6b1fb03dae7ef6b))
+
+
+
+
+
+
 # [1.22.0](https://github.com/AugustoPeraltaSoft/functionsmonorepo/compare/v1.21.0...v1.22.0) (2021-04-19)
 
 

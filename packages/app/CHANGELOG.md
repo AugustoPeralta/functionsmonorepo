@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.1](https://github.com/AugustoPeraltaSoft/functionsmonorepo/compare/v1.22.0...v1.22.1) (2021-04-19)
+
+**Note:** Version bump only for package nodedemoapp
+
+
+
+
+
+
 # [1.22.0](https://github.com/AugustoPeraltaSoft/functionsmonorepo/compare/v1.21.0...v1.22.0) (2021-04-19)
 
 
