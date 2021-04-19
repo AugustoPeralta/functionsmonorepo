@@ -16,7 +16,7 @@ jobs:
     steps: 
       - script: yarn
         displayName: Install Packages
-      - script: yarn run changed | grep 'nodedemoapp'
+      - script: yarn run changed | grep 'app'
 
   - job: CreateQASlot
     dependsOn: CheckingChanges
