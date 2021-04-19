@@ -13,8 +13,8 @@ jobs:
 #      - script: yarn lint
 #        displayName: linting
       # Test just the changed packages
-      - script: yarn test --since ${{ parameters.tag }}
-        displayName: unit testing
+#      - script: yarn test --since ${{ parameters.tag }}
+#        displayName: unit testing
       # Build just the changed packages
       - script: yarn run ci:build --since ${{ parameters.tag }}
         displayName: build
