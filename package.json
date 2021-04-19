@@ -4,13 +4,13 @@
     "packages/*"
   ],
   "scripts": {
-    "test": "lerna run test --since ",
+    "test": "lerna run test",
     "test-common": "lerna run test --scope=@gskTest/common",
     "test-deps": "lerna run test --scope={@gskTest/server,@gskTest/front}",
     "new-version": "lerna version --conventional-commits --yes",
     "diff": "lerna diff",
     "changed": "lerna changed",
-    "list": "lerna list --since",
+    "list": "lerna list",
     "ci:build": "lerna run ci:build",
     "ci:zip": "lerna run zip"
   },

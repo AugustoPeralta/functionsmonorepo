@@ -5,13 +5,14 @@ parameters:
   resourceGroupName: ''
   appName: ''
   notifyUsers: ''
-  tag: ''
+  - name: 'tag'
 
 jobs:
   - job: CheckingChanges
     displayName: CheckingChanges
     continueOnError: true
-    steps:
+    steps: 
+      - script: npm install --global lerna
       - script: yarn run changed | findstr 'nodedemoapp' --since ${{ parameters.tag }}
 
   - job: CreateQASlot

@@ -10,5 +10,5 @@
  */
 
 module.exports = async function (context) {
-    return `Hello APM ${context.bindings.name}!`;
+    return `Hello APeralta ${context.bindings.name}!`;
 };
