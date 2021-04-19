@@ -70,7 +70,7 @@ jobs:
       # publish package as artifact
 #      - task: CopyFiles@2
 #        inputs:
-#          Contents: '**\packages\**\*.zip'
+#          Contents: '**\packages\app\*.zip'
 #          TargetFolder: '$(Build.ArtifactStagingDirectory)'
 #          OverWrite: true
 #      - task: PublishPipelineArtifact@1
