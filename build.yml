@@ -39,16 +39,17 @@ jobs:
         inputs:
           Contents: "Tests"
       # publish package as artifact
-
       - task: CopyFiles@2
         inputs:
-          TargetFolder: "$(Build.ArtifactStagingDirectory)/functionapp"
+          SourceFolder: '/home/vsts/work/1/s/packages/app'
+          Contents: '*.zip'
+          TargetFolder: '$(Build.ArtifactStagingDirectory)/functionapp'
 
-      - task: ArchiveFiles@1
-        inputs:
-          rootFolder: "$(Build.ArtifactStagingDirectory)/functionapp"
-          includeRootFolder: "false"
-          archiveFile: "$(Build.ArtifactStagingDirectory)/functionapp.zip"
+#      - task: ArchiveFiles@1
+#        inputs:
+#          rootFolder: "$(Build.ArtifactStagingDirectory)/functionapp"
+#          includeRootFolder: "false"
+#          archiveFile: "$(Build.ArtifactStagingDirectory)/functionapp.zip"
 
       - task: PublishBuildArtifacts@1
         inputs:
