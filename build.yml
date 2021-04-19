@@ -53,8 +53,8 @@ jobs:
 
       - task: PublishBuildArtifacts@1
         inputs:
-          PathtoPublish: "$(Build.ArtifactStagingDirectory)/functionapp.zip"
-          ArtifactName: "drop"
+          PathtoPublish: "$(Build.ArtifactStagingDirectory)/functionapp/*.zip"
+          ArtifactName: "app"
           ArtifactType: "Container"
 
     
