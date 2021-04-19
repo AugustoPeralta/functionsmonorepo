@@ -12,7 +12,7 @@
     "changed": "lerna changed --since",
     "list": "lerna list --since",
     "ci:build": "lerna run ci:build",
-    "ci:zip": "lerna run pack"
+    "ci:zip": "lerna run zip"
   },
   "name": "yarn-workspaces",
   "version": "1.0.0",

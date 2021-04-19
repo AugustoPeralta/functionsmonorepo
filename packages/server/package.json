@@ -10,6 +10,7 @@
     "test": "echo Server works fine!",
     "build": "echo this is the build from server @@@@@@@",
     "ci:build": "yarn run --if-present build",
-    "pack": "npm run npm-pack-zip"
+    "pack": "npm-pack-zip",
+    "zip": "npm run pack"
   }
 }
