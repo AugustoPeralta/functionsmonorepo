@@ -5,7 +5,7 @@ parameters:
   resourceGroupName: ''
   appName: ''
   notifyUsers: ''
-  - name: 'tag'
+  tag: ''
 
 jobs:
   - job: CheckingChanges
